@@ -22,7 +22,7 @@ var enemyAttack = 12;
 
 var fight = function(enemyName) {
  
-
+  while(enemyHealth > 0) {//{ (module 3.2.7. shows curly braces here)
 
   //Ask if player would like to Fight or Skip
   var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
@@ -39,12 +39,12 @@ var fight = function(enemyName) {
   );
 
   // check enemy's health
-if (enemyHealth <= 0) {
+ if (enemyHealth <= 0) {
   window.alert(enemyName + " has died!");
-} 
-else {
+ } 
+ else {
   window.alert(enemyName + " still has " + enemyHealth + " health left.");
-}
+ }
   
   //remove player's health by subtracting the amount set in the enemyAttack variable
     playerHealth = playerHealth - enemyAttack;
@@ -80,10 +80,13 @@ else {
   // if no (false), ask question again by running fight() again
   else {
     fight();
+   }
   }
-}
-}
+ }
+};
 
-for (var i = 0; i < enemyNames.length; i++){
-  fight(enemyNames[i]);
+for (var i = 0; i < enemyNames.length; i++) {
+  var pickedEnemyName = enemyNames[i];
+  enemyHealth = 50;
+  fight(pickedEnemyName);
 }
