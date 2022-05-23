@@ -7,7 +7,6 @@ var playerMoney = 10;
 //console.log(playerName, playerAttack, playerHealth, playerMoney);
 
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
-//console.log(enemyNames);
 var enemyHealth = 50;
 var enemyAttack = 12;
 
@@ -17,7 +16,7 @@ var enemyAttack = 12;
     //console.log(enemyNames[i] + " is at " + i + " index ");
 //}
 
-  // Alert players that they are starting the round
+  // Alert players that they are starting the game
   window.alert("Welcome to Robot Gladiators!");
 
 var fight = function(enemyName) {
@@ -76,7 +75,7 @@ if (promptFight === "skip" || promptFight === "SKIP") {
 
    //check player's health
    if (playerHealth <= 0){
-     window.alert(playerName + " has died!");
+     window.alert(playerName + " has died! Game over!");
      break;
    }
 
@@ -85,11 +84,25 @@ if (promptFight === "skip" || promptFight === "SKIP") {
    }
 
  
-  } //end of while loop
- }; //end of fight function
+  }//end of fight decision
+ }//end of while loop
+}; //end of fight loop
 
 for (var i = 0; i < enemyNames.length; i++) {
-  var pickedEnemyName = enemyNames[i];
-  enemyHealth = 50;
-  fight(pickedEnemyName);
+  if (playerHealth > 0) {
+    // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
+    window.alert("Round " + (i + 1) + "!");
+
+    // pick new enemy to fight based on the index of the enemyNames array
+    var pickedEnemyName = enemyNames[i];
+
+    // reset enemyHealth before starting new fight
+    enemyHealth = 50;
+
+    // use debugger to pause script from running and check what's going on at that moment in the code
+    // debugger;
+
+    // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
+    fight(pickedEnemyName);
+  }
 }
