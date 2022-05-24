@@ -89,37 +89,6 @@ if (promptFight === "skip" || promptFight === "SKIP") {
 }; //end of fight loop
 
 
-//function to start a new game
-var startGame = function(){
-    // reset player stats
-    playerHealth = 100;
-    playerAttack = 10;
-    playerMoney = 10;
-
-  for (var i = 0; i < enemyNames.length; i++){
-    if (playerHealth > 0){
-      window.alert("Round " + (i + 1));
-
-      var pickedEnemyName = enemyNames[i];
-
-      enemyHealth = 50;
-
-      fight(pickedEnemyName);
-
-    }
-    else {
-      window.alert("You have lost your robot in battle. Game Over!");
-      break;
-    }
-  }
-
-  // play again
-  endGame();
-};
-
-// start the game when the page loads
-startGame();
-
 //fuction to end the entire game
 var endGame = function() {
   window.alert("The game has now ended. Let's see how you did!");
@@ -144,3 +113,37 @@ else {
 }
 };
  
+
+//function to start a new game
+var startGame = function(){
+    // reset player stats
+    playerHealth = 100;
+    playerAttack = 10;
+    playerMoney = 10;
+
+  for (var i = 0; i < enemyNames.length; i++){
+    if (playerHealth > 0){
+      window.alert("Round " + (i + 1));
+
+      var pickedEnemyName = enemyNames[i];
+
+      enemyHealth = 50;
+
+      fight(pickedEnemyName);
+
+    }
+    //if player is not alive, break out of the loop and let endGame function run
+    else {
+      window.alert("You have lost your robot in battle. Game Over!");
+      break;
+    }
+  }
+
+  // play again
+  endGame();
+};
+
+// start the game when the page loads
+startGame();
+
+
