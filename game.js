@@ -9,13 +9,7 @@ var playerMoney = 10;
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
-
-//for(var i = 0; i < enemyNames.length; i++){
-   // console.log(enemyNames[i]);
-    //console.log(i);
-    //console.log(enemyNames[i] + " is at " + i + " index ");
-//}
-
+ 
   // Alert players that they are starting the game
   window.alert("Welcome to Robot Gladiators!");
 
@@ -27,7 +21,7 @@ var fight = function(enemyName) {
   var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
   // if player picks "skip" confirm and then stop the loop
-if (promptFight === "skip" || promptFight === "SKIP") {
+  if (promptFight === "skip" || promptFight === "SKIP") {
   // confirm player wants to skip
   var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
@@ -44,7 +38,7 @@ if (promptFight === "skip" || promptFight === "SKIP") {
   //else {
   //  fight();
    //}
-}
+  }
 
   //If player decides to fight
   if (promptFight === "fight" || promptFight === "FIGHT" || promptFight === "Fight"){
@@ -57,7 +51,7 @@ if (promptFight === "skip" || promptFight === "SKIP") {
     playerName + " attacked " + enemyName + " . " + enemyName + " now has " + enemyHealth + " health remaining."
   );
 
-  // check enemy's health
+  // check enemies health
  if (enemyHealth <= 0) {
   window.alert(enemyName + " has died!");
   break;
@@ -82,7 +76,6 @@ if (promptFight === "skip" || promptFight === "SKIP") {
    else {
      window.alert(playerName + " still has " + playerHealth + " health left.");
    }
-
  
   }//end of fight decision
  }//end of while loop
@@ -100,7 +93,7 @@ var endGame = function() {
   else {
     window.alert ("You've lost your robot in battle");
   }
-   
+  
   // ask player if they'd like to play again
 var playAgainConfirm = window.confirm("Would you like to play again?");
 
@@ -121,6 +114,7 @@ var startGame = function(){
     playerAttack = 10;
     playerMoney = 10;
 
+
   for (var i = 0; i < enemyNames.length; i++){
     if (playerHealth > 0){
       window.alert("Round " + (i + 1));
@@ -131,19 +125,36 @@ var startGame = function(){
 
       fight(pickedEnemyName);
 
-    }
+     // if player is still alive and we're not at the last enemy in the array
+     if (playerHealth > 0 && i < enemyNames.length - 1) {
+      // ask if player wants to use the store before next round
+      var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
+    
+      // if yes, take them to the store() function
+      if (storeConfirm) {
+        shop();
+      }
     //if player is not alive, break out of the loop and let endGame function run
-    else {
+    } else {
       window.alert("You have lost your robot in battle. Game Over!");
       break;
     }
   }
-
-  // play again
+} 
+ 
+  // end the game function
   endGame();
+
 };
+
+//console log entering shop
+var shop = function() {
+  console.log("entered the shop");
+ };
+
 
 // start the game when the page loads
 startGame();
+
 
 
