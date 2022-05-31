@@ -284,5 +284,5 @@ var enemyInfo = [
 
 /* END GAME INFORMATION / VARIABLES */
 
-/* RUN GAME */
+/* Run game */
 startGame();
